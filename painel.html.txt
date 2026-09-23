@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo — KM Advocacia</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="body-painel">
+
+    <!-- Tela de Login -->
+    <div id="tela-login" class="login-container">
+        <form id="form-login">
+            <h2 style="color: var(--primary); margin-bottom: 15px; text-align: center;">🔐 KM Painel</h2>
+            <div class="input-group">
+                <label>E-mail de Acesso</label>
+                <input type="email" id="login-email" required value="admin@kmadvocacia.com">
+            </div>
+            <div class="input-group">
+                <label>Senha</label>
+                <input type="password" id="login-senha" required placeholder="Sua senha">
+            </div>
+            <button type="submit" class="btn-primary">Entrar no Painel</button>
+        </form>
+    </div>
+
+    <!-- Conteúdo do Painel (Protegido) -->
+    <div id="painel-conteudo" class="hidden dashboard-layout">
+        <aside class="sidebar">
+            <h2>⚖️ KM Advocacia</h2>
+            <ul>
+                <li><a href="#" class="active" onclick="mudarAba('atendimentos', event)">📊 Atendimentos</a></li>
+                <li><a href="#" onclick="mudarAba('configuracoes', event)">⚙️ Configurações</a></li>
+                <li><a href="#" onclick="fazerLogout()" class="logout">🚪 Sair</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <!-- Aba Atendimentos -->
+            <section id="aba-atendimentos" class="tab-section">
+                <h2>📊 Solicitações e Agendamentos</h2>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Protocolo</th>
+                                <th>Cliente</th>
+                                <th>WhatsApp</th>
+                                <th>Área / Assunto</th>
+                                <th>Data Solicitada</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="lista-atendimentos">
+                            <!-- Preenchido automaticamente via Supabase -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Aba Configurações -->
+            <section id="aba-configuracoes" class="tab-section hidden">
+                <h2>⚙️ Configurações do Sistema</h2>
+                <form id="form-config" style="max-width: 400px; margin-top: 20px; background: white; padding: 20px; border-radius: 8px;">
+                    <div class="input-group">
+                        <label>Valor da Consulta (R$)</label>
+                        <input type="text" id="cfg-valor" value="150,00">
+                    </div>
+                    <div class="input-group">
+                        <label>Chave Pix do Escritório</label>
+                        <input type="text" id="cfg-pix" value="00.000.000/0001-00">
+                    </div>
+                    <div class="input-group">
+                        <label>WhatsApp Profissional</label>
+                        <input type="text" id="cfg-whatsapp" value="(47) 99999-9999">
+                    </div>
+                    <button type="submit" class="btn-primary">Salvar Configurações</button>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

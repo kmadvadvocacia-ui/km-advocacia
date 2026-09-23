@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KM Advocacia — Solicitar Consulta</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⚖️ KM Advocacia</h1>
+            <p>Preencha os dados abaixo para solicitar o seu atendimento jurídico.</p>
+        </header>
+
+        <main>
+            <!-- Formulário Inicial -->
+            <form id="form-agendamento">
+                <div class="input-group">
+                    <label for="nome">Nome Completo</label>
+                    <input type="text" id="nome" required placeholder="Seu nome completo">
+                </div>
+
+                <div class="input-group">
+                    <label for="whatsapp">WhatsApp (com DDD)</label>
+                    <input type="text" id="whatsapp" required placeholder="(47) 99999-9999">
+                </div>
+
+                <div class="input-group">
+                    <label for="area">Área Jurídica</label>
+                    <select id="area" required>
+                        <option value="">Selecione a área</option>
+                        <option value="Previdenciário">Direito Previdenciário</option>
+                        <option value="Trabalhista">Direito Trabalhista</option>
+                        <option value="Civil">Direito Civil</option>
+                        <option value="Família">Direito de Família</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="assunto">Resumo do Caso / Assunto</label>
+                    <textarea id="assunto" rows="3" required placeholder="Descreva brevemente sua necessidade..."></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label for="data">Data e Horário Desejados</label>
+                    <input type="datetime-local" id="data" required>
+                </div>
+
+                <button type="submit" class="btn-primary">Continuar para Pagamento (Pix)</button>
+            </form>
+
+            <!-- Seção de Pagamento Pix (Oculta até preencher o form) -->
+            <div id="secao-pagamento" class="hidden">
+                <h2>Realize o Pagamento via Pix</h2>
+                <p style="margin-top: 10px;">Valor da Consulta: <strong id="lbl-valor">R$ 150,00</strong></p>
+                
+                <div class="pix-box">
+                    <p>Chave Pix do Escritório:</p>
+                    <code id="lbl-chave-pix">00.000.000/0001-00</code>
+                    <button type="button" id="btn-copiar" class="btn-secondary">Copiar Chave Pix</button>
+                </div>
+
+                <div class="input-group" style="margin-top: 20px;">
+                    <label for="comprovante">Anexar Comprovante (Opcional ou Nome do Arquivo)</label>
+                    <input type="text" id="comprovante" placeholder="Ex: Pix efetuado por Banco X">
+                </div>
+
+                <button type="button" id="btn-finalizar" class="btn-primary">Enviar Solicitação Definitiva</button>
+            </div>
+
+            <!-- Tela de Sucesso -->
+            <div id="secao-sucesso" class="hidden success-box">
+                <h2>✅ Solicitação Enviada!</h2>
+                <p style="margin: 15px 0;">O seu protocolo gerado é:</p>
+                <h3 id="txt-protocolo" style="color: var(--primary); margin-bottom: 15px;">KM-2026-0001</h3>
+                <p>Nossa equipe validará o seu pagamento e entrará em contato via WhatsApp em breve.</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
